@@ -75,7 +75,10 @@ namespace RadianceMultiplier {
 
             if (absRads.Any(absRad => absRad.LocateMyFSM("Control").ActiveStateName == "Arena 2 Start")) {
                 if (!flag2) {
-                    absRads.ForEach(absRad => absRad.LocateMyFSM("Control").SetState("Arena 2 Start"));
+                    absRads.ForEach(absRad => {
+                        absRad.LocateMyFSM("Control").SetState("Arena 2 Start");
+                        absRad.LocateMyFSM("Attack Choices").SetState("A1 End");
+                    });
                     flag2 = true;
                 }
             }
